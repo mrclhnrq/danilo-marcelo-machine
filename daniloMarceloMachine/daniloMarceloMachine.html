@@ -1,11 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Conversor de Bases</title>
 </head>
-<body>
+
+<body style="background-image: url('https://images.alphacoders.com/135/1358310.png');  background-repeat: no-repeat;
+             background-position: center; height: 100vh; width: 100vw">
+
+
+        <div style="display: flex; align-items: center; text-align: center; flex-direction: column;">
+            
+            <div id="div_titulo" style="display: flex; align-items: center; text-align: center;">
+                <h1 style="color: #8cff00; font-size: xx-large; background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 10px;">Ultra Converting Machine</h1>
+            </div>
+
+            <div style="display: flex; align-items: center; flex-direction: row;">
+
+                <div id="div_container1" style="display: flex; align-items: start; flex-direction: column; background-color: rgba(0, 0, 0, 0.8);; border-radius: 10px; margin: 20px;
+                    padding: 40px;">
     
+                    <div id="div_conversao1" style="display: flex; flex-direction: column;">
+    
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Decimal</h3>
+                            <input id="input_decimal" type="text" placeholder="Digite o valor em decimal">
+                            <br>
+                            <button onclick="converter1()" style="background-color: #dc143c; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#8cff00';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+    
+                    <div id="div_decimal"></div>
+    
+                </div>
+    
+                <div id="div_container2" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                    padding: 40px;">
+    
+                    <div id="div_conversao2" style="display: flex; align-items: center; flex-direction: column;">
+    
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Binário</h3>
+                            <input id="input_binario" type="text" placeholder="Digite o valor em binário">
+                            <br>
+                            <button onclick="converter2()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#8cff00';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+    
+                    <div id="div_binario"></div>
+    
+                </div>
+    
+                <div id="div_container3" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                    padding: 40px;">
+    
+                    <div id="div_conversao3" style="display: flex; align-items: center; flex-direction: column;">
+    
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Octal</h3>
+                            <input id="input_octal" type="text" placeholder="Digite o valor em octal">
+                            <br>
+                            <button onclick="converter3()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#8cff00';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+                    
+                    <div id="div_octal"></div>
+    
+                </div>
+    
+                <div id="div_container4" style="display: flex; align-items: center; flex-direction: column; background-color: rgba(0, 0, 0, 0.8); border-radius: 10px; margin: 20px;
+                padding: 40px;">
+                    <div id="div_conversao4" style="display: flex; align-items: center; flex-direction: column;">
+                        <div style="display: flex; align-items: center; flex-direction: column; border-radius: 50px;">
+                            <h3 style="color: #fff; font-size: 24px; font-family: 'Arial', sans-serif;">Hexadecimal</h3>
+                            <input id="input_hexa" type="text" placeholder="Digite o valor em Hexade...">
+                            <br>
+                            <button onclick="converter4()" style="background-color: crimson; color: #fff; padding: 5px 10px; border: none;
+                            border-radius: 5px; cursor: pointer; font-size: 16px;
+                            "onmouseover="this.style.backgroundColor='#8cff00';" onmouseout="this.style.backgroundColor='#dc143c';">Converter</button>
+                            <br>
+                        </div>
+    
+                    </div>
+                    
+                    <div id="div_hexa"></div>
+    
+                </div>
+                
+            </div>
+        </div>
+
 </body>
+
 </html>
+
+<script>
+
+    function converter1() {
+
+        var decimal = parseInt(document.getElementById('input_decimal').value, 10);
+        let binaria = decimal.toString(2);
+        let octal = decimal.toString(8);
+        let hexadecimal = decimal.toString(16).toUpperCase();
+
+        if (input_decimal.value == '' ){
+            div_decimal.innerHTML = "<b>Digite um número válido.</b>"
+        }else { 
+            
+            div_decimal.innerHTML = `<span style = "color: white;">O número <b style = "color: #8cff00;">${decimal}</b> convertido para; <br>
+                                     <br><i>Binário</i> é <b style = "color: #8cff00;">${binaria}</b> <br>
+                                     <br><i>Octal</i> é <b style = "color: #8cff00;">${octal}</b><br>
+                                     <br><i>Hexadecimal</i> é <b style = "color: #8cff00;">${hexadecimal}</b></span>`
+        }
+
+    }
+    
+    function converter2() {
+
+        var binario = parseInt(document.getElementById('input_binario').value, 2);
+        let decimal = binario.toString(10);
+        let octal = binario.toString(8);
+        let hexadecimal = binario.toString(16).toUpperCase();
+
+        if (input_binario.value == '' ){
+            div_binario.innerHTML = "<b>Digite um número válido.</b>"
+        }else { 
+
+            div_binario.innerHTML = `<span style = "color: white;">O número <b style = "color: #8cff00;">${Number(input_binario.value)}</b> convertido para; <br>
+                             <br><i>Decimal</i> é <b style = "color: #8cff00;">${decimal}</b> <br>
+                             <br><i>Octal</i> é <b style = "color: #8cff00;">${octal}</b><br>
+                             <br><i>Hexadecimal</i> é <b style = "color: #8cff00;">${hexadecimal}</b> </span>`
+        }
+
+    }
+
+    function converter3() {
+
+        var octal = parseInt(document.getElementById('input_octal').value, 8);
+        let decimal = octal.toString(10);
+        let binaria = octal.toString(2);
+        let hexadecimal = octal.toString(16).toUpperCase();
+
+        if (input_octal.value == '' ){
+            div_octal.innerHTML = "<b>Digite um número válido.</b>"
+        }else { 
+            
+            div_octal.innerHTML = `<span style = "color: white;">O número <b style = "color: #8cff00;">${Number(input_octal.value)}</b> convertido para; <br>                
+                             <br><i>Decimal</i> é <b style = "color: #8cff00;">${decimal}</b><br>
+                             <br><i>Binário</i> é <b style = "color: #8cff00;">${binaria}</b> <br>
+                             <br><i>Hexadecimal</i> é <b style = "color: #8cff00;">${hexadecimal}</b></span>`
+
+        }
+
+    }
+
+    function converter4() {
+
+        var hexa = parseInt(document.getElementById('input_hexa').value, 16);
+        let decimal = hexa.toString(10);
+        let binaria = hexa.toString(2);
+        let octal = hexa.toString(8);
+
+        if (input_hexa.value == '' ){
+            div_hexa.innerHTML = "<b>Digite um número válido.</b>"
+        }else {
+
+            div_hexa.innerHTML = `<span style = "color: white;">O número <b style = "color: #8cff00;">${(input_hexa.value)}</b> convertido para; <br>
+                             <br><i>Decimal</i> é <b style = "color: #8cff00;">${decimal}</b> <br>
+                             <br><i>Binário</i> é <b style = "color: #8cff00;">${binaria}</b> <br>
+                             <br><i>Octal</i> é <b style = "color: #8cff00;">${octal}</b><br></span>`
+        }
+    }
+
+
+</script>
+
+<!-- <input onclick="aparecer_octal()" type="checkbox"><b>Octal</b>
+<br>
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(0, 0, 0); width: 15%; height: 40px; font-weight: 500;"
+    id="demo2"></div>
+
+<br><br>
+
+<input onclick="aparecer_hexa()" type="checkbox"><b>Hexadecimal</b>
+<br>
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(7, 7, 7); width: 15%; height: 40px; font-weight: 500;"
+    id="demo3"></div>
+
+<br><br>
+
+<input onclick="aparecer_bin()" type="checkbox"><b>Binário</b>
+<br>
+<div style="display: none; background-color: #dcdcdc; border-radius: 5px; padding: 5px; color: rgb(5, 5, 5); width: 60%; height: 50px; font-weight: 500;"
+    id="demo4"></div>
+
+<br><br>
+-->
+
+
+<!-- // function aparecer_bin() {
+    //     demo4.style.display = 'block'
+    // }
+    
+    // function aparecer_hexa() {
+        //     demo3.style.display = 'block'
+        // }
+        
+        // function aparecer_octal() {
+            //     demo2.style.display = 'block'
+            // }
+            // document.bgColor = "#00ffff"; -->
